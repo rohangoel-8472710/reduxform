@@ -29,15 +29,14 @@ import asyncValidate from '../Validation/asyncValidate';
 //     }
 //     return errors;
 //   };
-  
-  const warn = (values: any) => {
-    const warnings = {};
-    if (values.age < 19) {
-      warnings.age = 'You seem a bit Young';
-    }
-    return warnings;
-  };
-  
+
+const warn = (values: any) => {
+  const warnings = {};
+  if (values.age < 19) {
+    warnings.age = 'You seem a bit Young';
+  }
+  return warnings;
+};
 
 const renderField = ({
   keyboardType,
