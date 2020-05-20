@@ -18,6 +18,12 @@ const validate = (values: any) => {
   } else if (Number(values.age) < 18) {
     errors.age = 'You must be at least 18 years old';
   }
+  if (!values.phonenumber) {
+    errors.phonenumber = 'Required';
+  }
+  if (!values.fullname) {
+    errors.fullname = 'Required';
+  }
   return errors;
 };
 

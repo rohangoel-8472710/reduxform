@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
   },
   clearButton: {
     alignItems: 'center',
+    margin:vw(20)
   },
   clearText: {
     backgroundColor: colors.powderBlue,

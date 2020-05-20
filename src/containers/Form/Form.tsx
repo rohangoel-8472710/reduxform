@@ -6,7 +6,9 @@ import colors from '../../constants/colors';
 // import submit from './submit';
 import validate from '../Validation/Validate';
 import asyncValidate from '../Validation/asyncValidate';
-
+import {CONTACT_FORM} from '../../formName';
+import SubmitButton from '../../components/submitButton';
+import normalizePhoneNumber from './normalizePhoneNumber';
 // const validate = (values: any) => {
 //     const errors = {};
 //     if (!values.username) {
@@ -29,6 +31,10 @@ import asyncValidate from '../Validation/asyncValidate';
 //     }
 //     return errors;
 //   };
+
+//Normalize = "Auto Correct Input"
+const normalizeUpper = (value: any) => value && value.toUpperCase();
+const normalizeLower = (value: any) => value && value.toLowerCase();
 
 const warn = (values: any) => {
   const warnings = {};
@@ -84,7 +90,17 @@ const formComponent = (props: any) => {
         keyboardType="default"
         label="Username:"
         name="username"
-        placeholder="Enter Name"
+        placeholder="Enter Name(lowercase)"
+        normalize={normalizeLower}
+        // validate={[required, maxLength20]}
+      />
+      <Field
+        component={renderField}
+        keyboardType="default"
+        label="Fullname:"
+        name="fullname"
+        placeholder="Full Name(uppercase)"
+        normalize={normalizeUpper}
         // validate={[required, maxLength20]}
       />
       <Field
@@ -96,6 +112,15 @@ const formComponent = (props: any) => {
         // validate={isValidEmail}
       />
       <Field
+        component={renderField}
+        keyboardType="numeric"
+        label="Phone No:"
+        name="phonenumber"
+        placeholder="Your phone number"
+        normalize={normalizePhoneNumber}
+      />
+
+      <Field
         name="age"
         keyboardType="numeric"
         label="Age:"
@@ -103,13 +128,7 @@ const formComponent = (props: any) => {
         placeholder="Enter Age"
         // validate={[required, number, minValue18]}
       />
-      <TouchableOpacity
-        style={styles.submitButton}
-        onPress={handleSubmit(onSubmit)}
-        disabled={submitting}
-        activeOpacity={0.7}>
-        <Text style={styles.submitText}>Submit</Text>
-      </TouchableOpacity>
+      <SubmitButton />
       <TouchableOpacity
         style={styles.clearButton}
         onPress={reset}
@@ -122,10 +141,11 @@ const formComponent = (props: any) => {
 };
 
 const Form = reduxForm({
-  form: 'Simple', // a unique identifier for this form
+  form: CONTACT_FORM, // a unique identifier for this form
   validate,
   asyncValidate,
   warn,
+  onSubmit: onSubmit,
 })(formComponent);
 
 export default Form;
