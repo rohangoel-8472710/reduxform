@@ -11,5 +11,10 @@ const colors = {
   yellow: '#ffff00',
   powderBlue: '#00ccff',
   darkGreen: '#006600',
+  mediumGreen: '#00cc66',
+  lightRed: '#ff3300',
+  inactiveIconColor: '#505050',
+  grey: '#808080',
+  orangeRed: '#FF4500',
 };
 export default colors;
