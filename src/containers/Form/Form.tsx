@@ -9,6 +9,7 @@ import asyncValidate from '../Validation/asyncValidate';
 import {CONTACT_FORM} from '../../formName';
 import SubmitButton from '../../components/submitButton';
 import normalizePhoneNumber from './normalizePhoneNumber';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 // const validate = (values: any) => {
 //     const errors = {};
 //     if (!values.username) {
@@ -83,60 +84,64 @@ const formComponent = (props: any) => {
   const {handleSubmit, submitting, reset} = props;
   console.log(`submitting = ${submitting}`);
   return (
-    <View style={styles.parentView}>
-      <Text style={styles.heading}>Sign Up</Text>
-      <Field
-        component={renderField}
-        keyboardType="default"
-        label="Username:"
-        name="username"
-        placeholder="Enter Name(lowercase)"
-        normalize={normalizeLower}
-        // validate={[required, maxLength20]}
-      />
-      <Field
-        component={renderField}
-        keyboardType="default"
-        label="Fullname:"
-        name="fullname"
-        placeholder="Full Name(uppercase)"
-        normalize={normalizeUpper}
-        // validate={[required, maxLength20]}
-      />
-      <Field
-        component={renderField}
-        keyboardType="email-address"
-        label="Email:"
-        name="email"
-        placeholder="Enter Email"
-        // validate={isValidEmail}
-      />
-      <Field
-        component={renderField}
-        keyboardType="numeric"
-        label="Phone No:"
-        name="phonenumber"
-        placeholder="Your phone number"
-        normalize={normalizePhoneNumber}
-      />
+    <KeyboardAwareScrollView
+      showsVerticalScrollIndicator={false}
+      bounces={false}>
+      <View style={styles.parentView}>
+        <Text style={styles.heading}>Sign Up</Text>
+        <Field
+          component={renderField}
+          keyboardType="default"
+          label="Username:"
+          name="username"
+          placeholder="Enter Name(lowercase)"
+          normalize={normalizeLower}
+          // validate={[required, maxLength20]}
+        />
+        <Field
+          component={renderField}
+          keyboardType="default"
+          label="Fullname:"
+          name="fullname"
+          placeholder="Full Name(uppercase)"
+          normalize={normalizeUpper}
+          // validate={[required, maxLength20]}
+        />
+        <Field
+          component={renderField}
+          keyboardType="email-address"
+          label="Email:"
+          name="email"
+          placeholder="Enter Email"
+          // validate={isValidEmail}
+        />
+        <Field
+          component={renderField}
+          keyboardType="numeric"
+          label="Phone No:"
+          name="phonenumber"
+          placeholder="Your phone number"
+          // normalize={normalizePhoneNumber}
+        />
 
-      <Field
-        name="age"
-        keyboardType="numeric"
-        label="Age:"
-        component={renderField}
-        placeholder="Enter Age"
-        // validate={[required, number, minValue18]}
-      />
-      <SubmitButton />
-      <TouchableOpacity
-        style={styles.clearButton}
-        onPress={reset}
-        disabled={submitting}
-        activeOpacity={0.7}>
-        <Text style={styles.clearText}>Clear</Text>
-      </TouchableOpacity>
-    </View>
+        <Field
+          name="age"
+          keyboardType="numeric"
+          label="Age:"
+          component={renderField}
+          placeholder="Enter Age"
+          // validate={[required, number, minValue18]}
+        />
+        <SubmitButton />
+        <TouchableOpacity
+          style={styles.clearButton}
+          onPress={reset}
+          disabled={submitting}
+          activeOpacity={0.7}>
+          <Text style={styles.clearText}>Clear</Text>
+        </TouchableOpacity>
+      </View>
+    </KeyboardAwareScrollView>
   );
 };
 

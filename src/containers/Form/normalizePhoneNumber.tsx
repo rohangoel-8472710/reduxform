@@ -1,4 +1,4 @@
-export default normalizePhoneNumber = (value: any) => {
+const normalizePhoneNumber = (value: any) => {
   if (!value) {
     return '';
   }
@@ -14,3 +14,4 @@ export default normalizePhoneNumber = (value: any) => {
     6,
   )}-${numberValue.slice(6, 10)}`;
 };
+export default normalizePhoneNumber;

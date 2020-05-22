@@ -79,6 +79,10 @@ target 'DemoProject' do
 
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
+  pod 'RNScreens', :path => '../node_modules/react-native-screens'
+
+  pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
+
   target 'DemoProjectTests' do
     inherit! :complete
     # Pods for testing

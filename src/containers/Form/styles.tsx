@@ -3,9 +3,7 @@ import {vw, vh} from '../../constants/dimensions';
 import colors from '../../constants/colors';
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column',
-    height: vw(70),
-    alignItems: 'flex-start',
+    height:vh(60),
   },
   inputContainer: {
     flexDirection: 'row',
@@ -32,7 +30,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: colors.lightOrange,
+    backgroundColor:colors.lightOrange,
+    height:vh(667),
   },
   heading: {
     fontSize: vw(40),
